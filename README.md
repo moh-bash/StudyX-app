@@ -15,7 +15,7 @@ StudyX is a mobile application built with React Native and Expo, designed to man
 - "User-Friendly Interface": Intuitive and easy-to-use interface for seamless navigation
 
 ## 📱 Download
-You can Download the app from the following link: [StudyX](example.com)
+You can Download the app from the following link: [StudyX](https://expo.dev/accounts/moh-bash/projects/studyx/builds/0dcc0db1-9a5a-4ee4-a798-fdbcd9d14462)
 
 ## 🤝 Contributing
 If you would like to contribute and add features to the app, please follow these steps:
