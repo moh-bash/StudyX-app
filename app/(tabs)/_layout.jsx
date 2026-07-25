@@ -4,52 +4,47 @@ import { Tabs } from "expo-router";
 
 export default function _layout() {
   return (
-    <Tabs screenOptions={{
-      headerShown: false,
+    <Tabs
+      screenOptions={{
+        headerShown: false,
 
-      tabBarStyle: {
-        position: "absolute",
-        left: 30,
-        right: 20,
-        bottom: 50,
-        width: "90%",
-        borderRadius: 20,
+        tabBarActiveTintColor: "#63A8D5",
+        tabBarInactiveTintColor: "#9CA3AF",
 
-        height: 70,
+        tabBarStyle: {
+          position: "absolute",
+          left: 10,
+          right: 10,
+          bottom: 40,
+          borderRadius: 20,
+          marginHorizontal: 20,
+          height: 58,
 
-        backgroundColor: "white",
+          backgroundColor: "#1F2937",
 
-        elevation: 8,
-
-        shadowColor: "#000",
-        shadowOpacity: 0.15,
-        shadowRadius: 10,
-        shadowOffset: {
-          width: 0,
-          height: 5,
+          elevation: 8,
+          borderTopWidth: 0,
         },
-
-        borderTopWidth: 0,
-      },
-    }}>
+      }}
+    >
+      <Tabs.Screen
+        name="home"
+        options={{
+          title: 'home',
+          tabBarIcon: () => <MaterialIcons name="home" size={24} color="white" />,
+        }} />
       <Tabs.Screen
         name="subject"
         options={{
           title: 'Subject',
-          tabBarIcon: () => <MaterialIcons name="subject" size={24} color="black" />,
+          tabBarIcon: () => <MaterialIcons name="subject" size={24} color="white" />,
         }}
       />
-      <Tabs.Screen
-        name="statistics"
-        options={{
-          title: 'Statistics',
-          tabBarIcon: () => <MaterialIcons name="bar-chart" size={24} color="black" />,
-        }} />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: () => <MaterialIcons name="settings" size={24} color="black" />,
+          tabBarIcon: () => <MaterialIcons name="settings" size={24} color="white" />,
         }} />
     </Tabs>
   )

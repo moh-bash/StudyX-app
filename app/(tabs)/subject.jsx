@@ -1,9 +1,11 @@
+import Entypo from '@expo/vector-icons/Entypo';
 import { useFocusEffect, useRouter } from "expo-router";
 import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 import ListItem from "../components/ListItem";
+
 
 export default function Subject() {
     const db = useSQLiteContext();
@@ -64,16 +66,8 @@ export default function Subject() {
                         className="bg-blue-600 rounded-full w-16 h-16 justify-center items-center"
                         onPress={() => router.push("/add-subject")}
                     >
-                        <Text
-                            style={{
-                                fontSize: 30,
-                                color: "#fff",
-                                fontWeight: "bold",
-                                margin: 0,
-                                padding: 0,
-                            }}
-                        >
-                            +
+                        <Text>
+                            <Entypo name="plus" size={29} color="white" />
                         </Text>
                     </Pressable>
                 </View>

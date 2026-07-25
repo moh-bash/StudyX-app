@@ -3,9 +3,7 @@
   "compilerOptions": {
     "strict": true,
     "paths": {
-      "@/*": [
-        "./*"
-      ]
+      "@/*": ["./*"]
     }
   },
   "include": [
@@ -13,6 +11,13 @@
     "**/*.tsx",
     ".expo/types/**/*.ts",
     "expo-env.d.ts",
-    "nativewind-env.d.ts"
-,     "app/_layout.jsx",     "app/index.jsx"  ]
+    "nativewind-env.d.ts",
+    "app/_layout.jsx",
+    "app/index.jsx",
+    "app/onboarding/components/OnboardingCard.jsx",
+    "app/onboarding/components/NextButton.jsx",
+    "app/onboarding/components/Pagination.jsx",
+    "app/onboarding/components/OnboardingCard.jsx",
+    "constants/data.js"
+  ]
 }
