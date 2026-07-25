@@ -3,7 +3,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import ListItem from "./components/ListItem";
+import ListItem from "../components/ListItem";
 
 export default function Subject() {
     const db = useSQLiteContext();

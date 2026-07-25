@@ -2,7 +2,6 @@ import { Stack } from "expo-router";
 import { SQLiteProvider } from 'expo-sqlite';
 import "../global.css";
 
-
 export default function RootLayout() {
   return (
     <SQLiteProvider
@@ -13,10 +12,7 @@ export default function RootLayout() {
         headerShown: false,
         animated: true,
         animation: "slide_from_bottom"
-      }} >
-        <Stack.Screen name="index" />
-        <Stack.Screen name="subject" />
-      </Stack>
+      }} />
     </SQLiteProvider>
   );
 }

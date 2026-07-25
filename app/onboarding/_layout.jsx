@@ -1,7 +1,6 @@
-import { View } from 'react-native';
-
+import { Stack } from "expo-router";
 export default function Welcome() {
   return (
-    <View>Welcome</View>
+    <Stack screenOptions={{ headerShown: false }} />
   )
 }
