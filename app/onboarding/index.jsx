@@ -7,7 +7,7 @@ import {
     View
 } from "react-native";
 
-import { slides } from "../constants/data";
+import { slides } from "../../constants/data";
 import OnboardingCard from "./components/OnboardingCard";
 import Pagination from "./components/Pagination";
 
