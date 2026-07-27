@@ -47,15 +47,15 @@ export default function Subject() {
 
     return (
         <>
-            <SafeAreaView className="flex-1 bg-gray-800 p-4">
+            <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-800 p-4">
                 <View className="flex-row justify-between items-center px-3 mb-5">
                     <View>
-                        <Text className="text-2xl text-white text-center">
+                        <Text className="text-2xl text-gray-900 dark:text-white text-center">
                             Percentage : {percentage.toFixed(2)}%
                         </Text>
 
                         {/* progress bar */}
-                        <View className="h-4 w-full bg-gray-600 rounded-full my-2">
+                        <View className="h-4 w-full bg-gray-200 dark:bg-gray-600 rounded-full my-2">
                             <View
                                 className="h-4 bg-blue-600 rounded-full shadow-lg shadow-blue-200"
                                 style={{ width: `${percentage}%` }}

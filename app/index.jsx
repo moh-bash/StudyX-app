@@ -9,14 +9,13 @@ export default function Index() {
     async function checkOnboarding() {
       const isOnboardingCompleted = await AsyncStorage.getItem("isOnboarding");
 
-      if (isOnboardingCompleted) {
+      if (!isOnboardingCompleted) {
         router.replace("/onboarding");
         return;
       }
 
       router.replace("/(tabs)/home");
     }
-
     void checkOnboarding();
   }, [router]);
 

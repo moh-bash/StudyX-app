@@ -37,26 +37,29 @@ export default function AddSubject() {
         <>
             <Stack.Screen options={{ title: "Add Subject" }} />
 
-            <View className="flex-1 bg-gray-800 justify-center items-center">
+            <View className="flex-1 bg-gray-50 dark:bg-gray-800 justify-center items-center">
 
                 <TextInput
-                    className="border border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-3 text-white bg-gray-500"
+                    className="border border-gray-300 dark:border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-3 text-gray-900 dark:text-white bg-white dark:bg-gray-500"
                     placeholder="Subject Name"
+                    placeholderTextColor="#9CA3AF"
                     value={nameSubject}
                     onChangeText={setNameSubject}
                 />
 
                 <TextInput
-                    className="border border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-3 text-white bg-gray-500"
+                    className="border border-gray-300 dark:border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-3 text-gray-900 dark:text-white bg-white dark:bg-gray-500"
                     placeholder="Project Grade"
+                    placeholderTextColor="#9CA3AF"
                     keyboardType="numeric"
                     value={projectGrade}
                     onChangeText={setProjectGrade}
                 />
 
                 <TextInput
-                    className="border border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-5 text-white bg-gray-500"
+                    className="border border-gray-300 dark:border-gray-400 rounded-xl px-4 py-3 w-10/12 mb-5 text-gray-900 dark:text-white bg-white dark:bg-gray-500"
                     placeholder="Exam Grade"
+                    placeholderTextColor="#9CA3AF"
                     keyboardType="numeric"
                     value={examGrade}
                     onChangeText={setExamGrade}

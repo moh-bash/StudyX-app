@@ -1,15 +1,19 @@
 import MaterialIcons from '@expo/vector-icons/MaterialIcons';
 import { Tabs } from "expo-router";
+import { useColorScheme } from "nativewind";
 
 
 export default function _layout() {
+  const { colorScheme } = useColorScheme();
+  const isDark = colorScheme === "dark";
+
   return (
     <Tabs
       screenOptions={{
         headerShown: false,
 
-        tabBarActiveTintColor: "#63A8D5",
-        tabBarInactiveTintColor: "#9CA3AF",
+        tabBarActiveTintColor: isDark ? "#93C5FD" : "#2563EB",
+        tabBarInactiveTintColor: isDark ? "#9CA3AF" : "#6B7280",
 
         tabBarStyle: {
           position: "absolute",
@@ -20,10 +24,11 @@ export default function _layout() {
           marginHorizontal: 20,
           height: 58,
 
-          backgroundColor: "#1F2937",
+          backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
 
           elevation: 8,
           borderTopWidth: 0,
+          borderColor: isDark ? "#374151" : "#E5E7EB",
         },
       }}
     >
@@ -31,20 +36,20 @@ export default function _layout() {
         name="home"
         options={{
           title: 'home',
-          tabBarIcon: () => <MaterialIcons name="home" size={24} color="white" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="home" size={24} color={color} />,
         }} />
       <Tabs.Screen
         name="subject"
         options={{
           title: 'Subject',
-          tabBarIcon: () => <MaterialIcons name="subject" size={24} color="white" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="subject" size={24} color={color} />,
         }}
       />
       <Tabs.Screen
         name="settings"
         options={{
           title: 'Settings',
-          tabBarIcon: () => <MaterialIcons name="settings" size={24} color="white" />,
+          tabBarIcon: ({ color }) => <MaterialIcons name="settings" size={24} color={color} />,
         }} />
     </Tabs>
   )
