@@ -7,6 +7,9 @@ StudyX is a mobile application built with React Native and Expo, designed to man
 ![React Native](https://img.shields.io/badge/React_Native-20232A?style=for-the-badge&logo=react&logoColor=61DAFB)
 ![Expo](https://img.shields.io/badge/Expo-20232A?style=for-the-badge&logo=expo&logoColor=white)
 ![nativewind](https://img.shields.io/badge/nativewind-20232A?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4)
+![SQLite](https://img.shields.io/badge/SQLite-20232A?style=for-the-badge&logo=sqlite&logoColor=0D7E4E)
+
+<img src="./assets/images/cavor (1).png" />
 </div>
 
 ## 🚀 Features
@@ -17,16 +20,61 @@ StudyX is a mobile application built with React Native and Expo, designed to man
 ## 📱 Download
 You can Download the app from the following link: [StudyX](https://expo.dev/accounts/moh-bash/projects/studyx/builds/0dcc0db1-9a5a-4ee4-a798-fdbcd9d14462)
 
-## 🤝 Contributing
-If you would like to contribute and add features to the app, please follow these steps:
-1. Fork the repository
-2. Create a new branch
-3. Make your changes
-4. Commit your changes
-5. Push to the branch
-6. Create a pull request
+## 📁 Directory Structure
+```
+StudyX/
+├─ app/
+│  ├─ (tabs)/
+│  │  ├─ _layout.jsx
+│  │  ├─ home.jsx
+│  │  ├─ settings.jsx
+│  │  └─ subject.jsx
+│  ├─ components/
+│  │  └─ ListItem.jsx
+│  ├─ onboarding/
+│  │  ├─ components/
+│  │  │  ├─ NextButton.jsx
+│  │  │  ├─ OnboardingCard.jsx
+│  │  │  └─ Pagination.jsx
+│  │  ├─ _layout.jsx
+│  │  └─ index.jsx
+│  ├─ utils/
+│  ├─ _layout.jsx
+│  ├─ add-subject.jsx
+│  └─ index.jsx
+├─ constants/
+│  └─ data.js
+├─ database/
+│  ├─ repositories/
+│  │  └─ grades.repository.js
+│  ├─ index.js
+│  └─ schema.js
+|─ assets/
+|  ├─ images/
+|  └─ fonts/
+├─ .gitignore
+├─ app.json
+├─ babel.config.js
+├─ eas.json
+├─ eslint.config.js
+├─ global.css
+├─ metro.config.js
+├─ nativewind-env.d.ts
+├─ package.json
+├─ README.md
+├─ tailwind.config.js
+└─ tsconfig.json
+```
 
-## Installation
+## 🔧 Tech stack
+- React Native
+- Expo
+- NativeWind
+- SQLite
+- AsyncStorage
+- Expo Router
+
+## ⏬ Installation
 To run the app locally, follow these steps:
 1. Clone the repository: 
    
@@ -46,5 +94,15 @@ To run the app locally, follow these steps:
    ```bash
    npm start
    ```
+
+## 🤝 Contributing
+If you would like to contribute and add features to the app, please follow these steps:
+1. Fork the repository
+2. Create a new branch
+3. Make your changes
+4. Commit your changes
+5. Push to the branch
+6. Create a pull request
+
 ## 📃 License
 MIT

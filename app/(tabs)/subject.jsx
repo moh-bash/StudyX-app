@@ -4,6 +4,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
+import { avgGrade, getGrades } from "../../database/repositories/grades.repository";
 import ListItem from "../components/ListItem";
 
 
@@ -21,13 +22,8 @@ export default function Subject() {
     );
 
     async function loadGrades() {
-        const result = await db.getAllAsync(
-            "SELECT * FROM grades ORDER BY id DESC"
-        );
-
-        const perGrade = await db.getAllAsync(
-            "SELECT AVG(total_grade) as avg FROM grades"
-        );
+        const result = await getGrades(db);
+        const perGrade = await avgGrade(db);
 
         setGrades(result);
 
@@ -41,7 +37,6 @@ export default function Subject() {
             "DELETE FROM grades WHERE id = ?",
             [id]
         );
-
         loadGrades();
     }
 

@@ -22,7 +22,7 @@ export default function _layout() {
           bottom: 40,
           borderRadius: 20,
           marginHorizontal: 20,
-          height: 58,
+          height: 65,
 
           backgroundColor: isDark ? "#1F2937" : "#FFFFFF",
 

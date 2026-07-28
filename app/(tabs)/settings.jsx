@@ -1,11 +1,12 @@
-import { useColorScheme } from "nativewind";
+import AsyncStorage from "@react-native-async-storage/async-storage";
+import { useColorScheme } from 'nativewind';
 import { Pressable, Text, View } from 'react-native';
 import { SafeAreaView } from "react-native-safe-area-context";
 
 
 
 export default function settings() {
-  const { colorScheme, setColorScheme } = useColorScheme();
+  const {colorScheme, setColorScheme} = useColorScheme();
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-800 p-4">
@@ -16,6 +17,7 @@ export default function settings() {
         <Pressable
           onPress={() => {
             setColorScheme("dark");
+            AsyncStorage.setItem("theme", "dark")
           }}
           className={`flex-1 px-6 py-3 rounded-l-3xl w-full shadow-lg shadow-black ${colorScheme === "dark" ? "bg-blue-600" : "bg-gray-600"
             }`}
@@ -27,6 +29,7 @@ export default function settings() {
         <Pressable
           onPress={() => {
             setColorScheme("light");
+            AsyncStorage.setItem("theme", "light")
           }}
           className={`flex-1 px-6 py-3 rounded-r-3xl w-full shadow-lg shadow-black ${colorScheme === "light" ? "bg-blue-600" : "bg-gray-600"
             }`}
