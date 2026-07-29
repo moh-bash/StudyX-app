@@ -1,4 +1,3 @@
-import AsyncStorage from '@react-native-async-storage/async-storage';
 import { useFocusEffect } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
 import { useCallback, useState } from 'react';
@@ -9,7 +8,6 @@ import { avgGrade } from '../../database/repositories/grades.repository';
 export default function home() {
   const db = useSQLiteContext();
   const [percentage, setPercentage] = useState(0);
-  const themes = AsyncStorage.getItem("theme");
 
    useFocusEffect(
         useCallback(() => {
@@ -36,7 +34,6 @@ export default function home() {
       <View className="rounded-3xl w-full mx-5 bg-green-700 p-5 shadow-md shadow-black">
         <Text className="text-lg font-bold text-white">{percentage.toFixed(2)}%</Text>
         <Text className="mt-2 text-gray-300">This is a simple card component.</Text>
-        <Text>{themes}</Text>
       </View>
     </SafeAreaView>
   )
