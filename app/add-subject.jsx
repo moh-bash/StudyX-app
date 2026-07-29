@@ -7,9 +7,9 @@ import {
     TextInput,
     View,
 } from "react-native";
+import { addSubject } from "../database/repositories/subjects.repository";
 
 export default function AddSubject() {
-
     const db = useSQLiteContext();
     const router = useRouter();
 
@@ -18,18 +18,7 @@ export default function AddSubject() {
     const [examGrade, setExamGrade] = useState("");
 
     async function handleSave() {
-
-        await db.runAsync(
-            `INSERT INTO grades
-            (project_grade, exam_grade, name_subject)
-            VALUES (?, ?, ?)`,
-            [
-                projectGrade,
-                examGrade,
-                nameSubject,
-            ]
-        );
-
+        await addSubject(db, projectGrade, examGrade, nameSubject)
         router.back();
     }
 

@@ -4,7 +4,7 @@ import { useSQLiteContext } from "expo-sqlite";
 import { useCallback, useState } from "react";
 import { FlatList, Pressable, Text, View } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
-import { avgGrade, getGrades } from "../../database/repositories/grades.repository";
+import { deleteSubject, getSubjects } from "../../database/repositories/subjects.repository";
 import ListItem from "../components/ListItem";
 
 
@@ -12,53 +12,33 @@ export default function Subject() {
     const db = useSQLiteContext();
     const router = useRouter();
 
-    const [grades, setGrades] = useState([]);
-    const [percentage, setPercentage] = useState(0);
+    const [subjects, setSubjects] = useState([]);
 
     useFocusEffect(
         useCallback(() => {
-            loadGrades();
+            loadSubjects();
         }, [])
     );
 
-    async function loadGrades() {
-        const result = await getGrades(db);
-        const perGrade = await avgGrade(db);
-
-        setGrades(result);
-
-        if (perGrade.length > 0) {
-            setPercentage(perGrade[0].avg ?? 0);
-        }
+    async function loadSubjects() {
+        const result = await getSubjects(db);
+        setSubjects(result);
     }
 
     async function deleteGrade(id) {
-        await db.runAsync(
-            "DELETE FROM grades WHERE id = ?",
-            [id]
-        );
-        loadGrades();
+        await deleteSubject(db, id);
+        loadSubjects();
     }
 
     return (
         <>
             <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-800 p-4">
                 <View className="flex-row justify-between items-center px-3 mb-5">
-                    <View>
-                        <Text className="text-2xl text-gray-900 dark:text-white text-center">
-                            Percentage : {percentage.toFixed(2)}%
-                        </Text>
-
-                        {/* progress bar */}
-                        <View className="h-4 w-full bg-gray-200 dark:bg-gray-600 rounded-full my-2">
-                            <View
-                                className="h-4 bg-blue-600 rounded-full shadow-lg shadow-blue-200"
-                                style={{ width: `${percentage}%` }}
-                            />
-                        </View>
-                    </View>
+                    <Text className="text-3xl font-bold text-gray-900 dark:text-white">
+                        Subjects
+                    </Text>
                     <Pressable
-                        className="bg-blue-600 rounded-full w-16 h-16 justify-center items-center"
+                        className="bg-blue-600 rounded-full w-14 h-14 justify-center items-center"
                         onPress={() => router.push("/add-subject")}
                     >
                         <Text>
@@ -68,13 +48,17 @@ export default function Subject() {
                 </View>
 
                 <FlatList
-                    data={grades}
+                    data={subjects}
                     keyExtractor={(item) => item.id.toString()}
                     renderItem={({ item }) => (
-                        <ListItem
-                            grade={item}
-                            onDelete={deleteGrade}
-                        />
+                        <Pressable
+                            onPress={() => router.push(`/detailsSubject/${item.id}`)}
+                        >
+                            <ListItem
+                                subject={item}
+                                onDelete={deleteGrade}
+                            />
+                        </Pressable>
                     )}
                 />
 

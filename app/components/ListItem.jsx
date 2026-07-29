@@ -9,28 +9,28 @@ const handleColorTotal = (g) => {
     return 'text-red-500';
 };
 
-export default function ListItem({ grade, onDelete }) {
+export default function ListItem({ subject, onDelete }) {
     return (
         <View className="bg-gray-100 dark:bg-gray-700 rounded-2xl mb-4 px-4 py-3 border border-blue-500 flex-row justify-between items-center">
 
             <View className="flex-1 me-5">
 
                 <Text className="text-gray-900 dark:text-white text-xl font-black">
-                    {grade.name_subject}
+                    {subject.name_subject}
                 </Text>
 
                 <View className="flex-row justify-between mt-2">
 
                     <Text className="text-gray-700 dark:text-white">
-                        Project: {grade.project_grade}
+                        Project: {subject.project_grade}
                     </Text>
 
                     <Text className="text-gray-700 dark:text-white">
-                        Exam: {grade.exam_grade}
+                        Exam: {subject.exam_grade}
                     </Text>
 
-                    <Text className={handleColorTotal(grade.total_grade)}>
-                        Total: {Number(grade.total_grade).toFixed(2)}%
+                    <Text className={handleColorTotal(subject.total_grade)}>
+                        Total: {Number(subject.total_grade).toFixed(2)}%
                     </Text>
 
                 </View>
@@ -39,7 +39,7 @@ export default function ListItem({ grade, onDelete }) {
 
             <Pressable
                 className="bg-red-600 px-3 py-2 rounded-full"
-                onPress={() => onDelete(grade.id)}
+                onPress={() => onDelete(subject.id)}
             >
                 <MaterialIcons
                     name="delete"

@@ -21,24 +21,24 @@ export default function settings() {
       const themeq = await AsyncStorage.getItem("theme-buttons");
       if (themeq) {
         setColorButtons(themeq);
-      }else{
+      } else {
         setColorButtons("system");
       }
     };
     getTheme();
-  },[colorButtons]);
+  }, [colorButtons]);
 
   return (
     <SafeAreaView className="flex-1 bg-gray-50 dark:bg-gray-800 p-4">
       <Text className="text-3xl font-bold text-gray-900 dark:text-white">Settings</Text>
-      <View className=" mt-4 rounded-3xl bg-gray-300 dark:bg-gray-700 p-2 shadow-md shadow-black">
-        <Text className="text-gray-900 dark:text-white text-xl font-bold m-2">Theme</Text>
+      <Text className="text-gray-900 dark:text-white text-xl font-bold mt-5 ms-3">Theme</Text>
+      <View className=" mt-1 rounded-3xl bg-gray-300 dark:bg-gray-700 p-2 shadow-md shadow-black">
         <View className="flex flex-row gap-2 items-center justify-around">
           <Pressable
             onPress={() => {
               changeTheme('dark');
             }}
-            className={`flex-1 px-5 py-3 rounded-l-3xl w-full shadow-lg shadow-black ${colorButtons === "dark" ? "bg-primary" : "bg-gray-600"
+            className={`flex-1 px-5 py-3 rounded-l-xl w-full shadow-lg shadow-black ${colorButtons === "dark" ? "bg-primary" : "bg-gray-600"
               }`}
           >
             <Text className="text-white font-bold mx-auto">
@@ -60,11 +60,47 @@ export default function settings() {
             onPress={() => {
               changeTheme('system');
             }}
-            className={`flex-1 px-5 py-3 rounded-r-3xl w-full shadow-lg shadow-black ${colorButtons === "system" ? "bg-blue-600" : "bg-gray-600"
+            className={`flex-1 px-5 py-3 rounded-r-xl w-full shadow-lg shadow-black ${colorButtons === "system" ? "bg-blue-600" : "bg-gray-600"
               }`}
           >
             <Text className="text-white font-bold mx-auto">
               system 📱
+            </Text>
+          </Pressable>
+        </View>
+        {/* color primary */}
+        <View className="flex-row justify-between items-center pt-3">
+          <View className="h-16 w-24 rounded-l-xl bg-lime-500 shadow-lg shadow-black"></View>
+          <View className="h-16 w-24 bg-teal-500 shadow-lg shadow-black"></View>
+          <View className="h-16 w-24 bg-pink-500 shadow-lg shadow-black"></View>
+          <View className="h-16 w-24 rounded-r-xl bg-amber-500 shadow-lg shadow-black"></View>
+        </View>
+      </View>
+
+      {/* languages */}
+      <Text className="text-gray-900 dark:text-white text-xl font-bold mt-5 ms-3">Languages</Text>
+      <View className=" mt-1 rounded-3xl bg-gray-300 dark:bg-gray-700 p-2 shadow-md shadow-black">
+        <View className="flex flex-row gap-2 items-center justify-around">
+          <Pressable
+            onPress={() => {
+              changeTheme('dark');
+            }}
+            className={`flex-1 px-5 py-3 rounded-l-xl w-full shadow-lg shadow-black ${colorButtons === "dark" ? "bg-primary" : "bg-gray-600"
+              }`}
+          >
+            <Text className="text-white font-bold mx-auto">
+            English  🇺🇸
+            </Text>
+          </Pressable>
+          <Pressable
+            onPress={() => {
+              changeTheme('dark');
+            }}
+            className={`flex-1 px-5 py-3 rounded-r-xl w-full shadow-lg shadow-black ${colorButtons === "light" ? "bg-primary" : "bg-gray-600"
+              }`}
+          >
+            <Text className="text-white font-bold mx-auto">
+              عربي  🇸🇦
             </Text>
           </Pressable>
         </View>
