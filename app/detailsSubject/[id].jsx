@@ -23,10 +23,16 @@ export default function detailsSubject() {
     return (
         <SafeAreaView className="flex-1 items-center  bg-white dark:bg-gray-900">
             {subject && (
-                <Text>
-                    <Text className="font-bold">Name: </Text>
-                    {subject.name_subject}
-                </Text>
+                <>
+                    <Text className="text-lg text-gray-950 dark:text-white">
+                        <Text className="font-bold text-gray-950 dark:text-white">Name: </Text>
+                        {subject.name_subject}
+                    </Text>
+                    <Text className="text-lg text-gray-950 dark:text-white">
+                        <Text className="font-bold text-gray-950 dark:text-white">Description: </Text>
+                        {subject.description_subject}
+                    </Text>
+                </>
             )}
         </SafeAreaView>
     )
