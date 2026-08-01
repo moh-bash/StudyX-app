@@ -1,4 +1,5 @@
 import { router } from "expo-router";
+import { useColorScheme } from "nativewind";
 import { useRef, useState } from "react";
 import {
     FlatList, StatusBar,
@@ -6,8 +7,8 @@ import {
     TouchableOpacity,
     View
 } from "react-native";
-import { useColorScheme } from "nativewind";
 
+import AsyncStorage from "@react-native-async-storage/async-storage";
 import { slides } from "../../constants/data";
 import OnboardingCard from "./components/OnboardingCard";
 import Pagination from "./components/Pagination";
@@ -18,7 +19,7 @@ const [currentIndex, setCurrentIndex] = useState(0);
 const { colorScheme } = useColorScheme();
 const isDark = colorScheme === "dark";
 
-  const nextSlide = () => {
+  const nextSlide = async () => {
     if (currentIndex < slides.length - 1) {
       const nextIndex = currentIndex + 1;
 
@@ -29,6 +30,7 @@ const isDark = colorScheme === "dark";
 
       setCurrentIndex(nextIndex);
     } else {
+      await AsyncStorage.setItem("isOnboarding", "true");
       router.replace("../(tabs)/home");
     }
   };

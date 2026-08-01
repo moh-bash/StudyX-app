@@ -9,24 +9,24 @@ const handleColorTotal = (g) => {
     return 'text-red-500';
 };
 
-export default function ListItem({ subject, onDelete }) {
+export default function ListItem({ subject }) {
     return (
         <View className="bg-gray-100 dark:bg-gray-700 rounded-2xl mb-4 px-4 py-3 border border-blue-500 flex-row justify-between items-center">
 
             <View className="flex-1 me-5">
 
-                <Text className="text-gray-900 dark:text-white text-xl font-black">
-                    {subject.name_subject}
+                <Text numberOfLines={1} className="text-gray-900 dark:text-white text-xl font-black">
+                    {subject.name_en}
                 </Text>
 
                 <View className="flex-row justify-between mt-2">
 
                     <Text className="text-gray-700 dark:text-white">
-                        Project: {subject.project_grade}
+                        Project: 
                     </Text>
 
                     <Text className="text-gray-700 dark:text-white">
-                        Exam: {subject.exam_grade}
+                        Exam: 
                     </Text>
 
                     <Text className={handleColorTotal(subject.total_grade)}>

@@ -1,48 +1,51 @@
-// get all subjects
-export async function getSubjects(db) {
+// get available Subjects
+export async function getAvailableSubjects(db) {
     return await db.getAllAsync(
-        "SELECT * FROM grades ORDER BY id DESC"
-    );
+        `
+            SELECT s.* 
+            FROM Subjects s
+            WHERE s.id NOT IN (
+                SELECT subject_id FROM Student_Enrollments WHERE status = 'Passed'
+            )
+            AND NOT EXISTS (
+                SELECT 1 FROM Prerequisites p 
+                WHERE p.subject_id = s.id 
+                AND p.required_subject_id NOT IN (
+                    SELECT subject_id FROM Student_Enrollments WHERE status = 'Passed'
+                )
+            );
+        `
+    )
 };
 
-// get a subject by id
-export async function getSubjectById(db, id) {
-    return await db.getFirstAsync(
-        "SELECT * FROM grades WHERE id = ?",
-        [id]
-    );
+// add a new Subject to student
+export async function enrollStudentInSubjects(db, semesterId, subjectIds) {
+    for (const subjectId of subjectIds) {
+        await db.runAsync(
+            `INSERT INTO Student_Enrollments (semester_id, subject_id) VALUES (?, ?)`,
+            [semesterId, subjectId]
+        );
+    }
 };
 
-// add a new subject
-export async function addSubject(db, projectGrade, examGrade, nameSubject) {
-    await db.runAsync(
-        `INSERT INTO grades
-            (project_grade, exam_grade, name_subject)
-            VALUES (?, ?, ?)`,
-        [
-            projectGrade,
-            examGrade,
-            nameSubject,
-        ]
-    );
-};
-
-// delete a subject
-export async function deleteSubject(db, id) {
-    await db.runAsync(
-        "DELETE FROM grades WHERE id = ?",
-        [id]
-    );
-};
-
-// average grade
-export async function avgGrade(db) {
+// get subjects for a specific semester
+export async function getSubjectsForSemester(db, semesterId) {
     return await db.getAllAsync(
-        "SELECT AVG(total_grade) as avg FROM grades"
-    );
-}
-
-// get number of subjects
-export async function getNumSubjects(db) {
-    return await db.getAllAsync('SELECT COUNT(*) AS num_subjects FROM grades;');
+        `SELECT 
+        Subjects.id,
+        Subjects.code,
+        Subjects.name_ar,
+        Subjects.name_en,
+        Subjects.credit_hours,
+        Subjects.project_weight,
+        Subjects.exam_weight,
+        Student_Enrollments.status,
+        Student_Enrollments.project_mark,
+        Student_Enrollments.exam_mark,
+        Student_Enrollments.total_mark
+        FROM Student_Enrollments
+        JOIN Subjects ON Student_Enrollments.subject_id = Subjects.id
+        WHERE Student_Enrollments.semester_id = ?;`,
+         [semesterId]
+    )
 }

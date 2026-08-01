@@ -1,33 +1,19 @@
 import { useFocusEffect } from 'expo-router';
 import { useSQLiteContext } from 'expo-sqlite';
-import { useCallback, useState } from 'react';
+import { useCallback } from 'react';
 import { Text, View } from 'react-native';
 import { SafeAreaView } from 'react-native-safe-area-context';
-import { avgGrade, getNumSubjects } from '../../database/repositories/subjects.repository';
 
 export default function home() {
   const db = useSQLiteContext();
-  const [percentage, setPercentage] = useState(0);
-  const [numSubjects, setNumSubjects] = useState(0);
 
   useFocusEffect(
     useCallback(() => {
-      loadGrades();
     }, [])
   );
 
 
-  async function loadGrades() {
-    const perGrade = await avgGrade(db);
-    if (perGrade.length > 0) {
-      setPercentage(perGrade[0].avg ?? 0);
-    }
-
-    const numSub = await getNumSubjects(db);
-    if (numSub.length > 0) {
-      setNumSubjects(numSub[0].num_subjects ?? 0);
-    }
-  }
+  
 
   return (
     <SafeAreaView className="flex-1 items-center bg-gray-100 dark:bg-gray-800 p-4">
@@ -43,7 +29,7 @@ export default function home() {
               Percentage
             </Text>
             <Text className="text-2xl text-white font-bold">
-              {percentage.toFixed(2)}%
+              22%
             </Text>
           </View>
 
@@ -51,7 +37,7 @@ export default function home() {
           <View className="h-4 w-full bg-white dark:bg-gray-500 rounded-full my-2">
             <View
               className="h-4 bg-teal-400 rounded-full shadow-lg shadow-green-200"
-              style={{ width: `${percentage}%` }}
+              style={{ width: `${22}%` }}
             />
           </View>
         </View>
@@ -62,7 +48,7 @@ export default function home() {
             Subjects
           </Text>
           <Text className="text-3xl text-white font-bold">
-            {numSubjects}
+            15
           </Text>
         </View>
         <View className="flex-1 rounded-3xl bg-amber-600 p-5 shadow-xl shadow-amber-600/55">
@@ -70,7 +56,7 @@ export default function home() {
             Semesters
           </Text>
           <Text className="text-3xl text-white font-bold">
-            {percentage.toFixed(2)}%
+            22%
           </Text>
         </View>
       </View>

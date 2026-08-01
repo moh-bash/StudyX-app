@@ -9,7 +9,7 @@ StudyX is a mobile application built with React Native and Expo, designed to man
 ![nativewind](https://img.shields.io/badge/nativewind-20232A?style=for-the-badge&logo=tailwindcss&logoColor=06B6D4)
 ![SQLite](https://img.shields.io/badge/SQLite-20232A?style=for-the-badge&logo=sqlite&logoColor=0D7E4E)
 
-<img src="./assets/images/cavor (1).png" />
+<img src="./assets/images/cavor (2).png" />
 </div>
 
 ## 🚀 Features
@@ -73,6 +73,11 @@ StudyX/
 - SQLite
 - AsyncStorage
 - Expo Router
+
+## 🗄️ Database Schema
+The following diagram illustrates the database architecture and the relationships between the tables used in the application:
+
+![Database ER Diagram](./assets//images/DatabaseSchema%20.png)
 
 ## ⏬ Installation
 To run the app locally, follow these steps:

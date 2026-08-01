@@ -1,5 +1,6 @@
-import { createSubjectsTable } from "./schema";
-
+import { initDatabaseSchema } from "./schema";
+import { seedDatabase } from "./seed";
 export async function initializeDatabase(db) {
-   await createSubjectsTable(db);
+   await initDatabaseSchema(db);
+   await seedDatabase(db);
 }
