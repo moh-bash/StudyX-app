@@ -30,7 +30,7 @@ export default function detailsSubject() {
                     </Text>
                     <Text className="text-lg text-gray-950 dark:text-white">
                         <Text className="font-bold text-gray-950 dark:text-white">Description: </Text>
-                        {subject.description_subject}
+                        {subject.description_subject}l
                     </Text>
                 </>
             )}
