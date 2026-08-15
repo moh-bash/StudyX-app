@@ -1,5 +1,5 @@
 # 🎓 StudyX
-StudyX is a mobile application built with React Native and Expo, designed to manage and calculate university grades
+StudyX is a mobile application built with React Native and Expo, designed to manage and calculate university grades 💯
 
 <div align="center">
 <hr/>
